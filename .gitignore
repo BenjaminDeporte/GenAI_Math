@@ -3,3 +3,4 @@ models
 logs
 .env
 .venv
+.cache

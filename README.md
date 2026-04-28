@@ -1,3 +1,6 @@
+WHAT IS THIS ALL ABOUT
+----------------------
+
 Generic code to test various ways of teaching LLMs math
 
 Dataset : NuminaMath (see paper)
