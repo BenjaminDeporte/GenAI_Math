@@ -30,6 +30,7 @@ dependencies = [
     "nvidia-cusparse-cu12",
     "nvidia-nccl-cu12",
     "nvidia-nvjitlink-cu12",
+    "bert-score>=0.3.13",
 ]
 
 # cu130 for 3080Ti, cu124 for the DEEL machine
