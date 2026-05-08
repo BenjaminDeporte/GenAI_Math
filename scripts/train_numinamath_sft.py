@@ -72,19 +72,19 @@ LOGGING_DIR = PROJECT_ROOT / "logs"
 
 # Dataset subset configuration
 USE_SUBSET = True
-TRAIN_SUBSET_SIZE = 100
-TEST_SUBSET_SIZE = 10
+TRAIN_SUBSET_SIZE = 10000
+TEST_SUBSET_SIZE = 200
 
 # Training configuration
 SMOKE_RUN = False  # Set to False for full training
-NUM_EPOCHS = 1
+NUM_EPOCHS = 3
 RANK = 4
 
 # Evaluation configuration
-N_EVAL_EXAMPLES = 3
+N_EVAL_EXAMPLES = 1
 EVAL_SEED = 123
 MAX_NEW_TOKENS = 512  # Reduced from 2048 for faster evaluation
-TEST_METRIC_SUBSET_SIZE = 5
+TEST_METRIC_SUBSET_SIZE = 200
 
 # BERTScore configuration
 ROBERTA_MODEL_DIR = PROJECT_ROOT / "models" / "roberta-large"
@@ -266,18 +266,18 @@ def main():
     sft_args = SFTConfig(
         output_dir=str(OUTPUT_DIR),
         per_device_train_batch_size=1,
-        per_device_eval_batch_size=1,
+        per_device_eval_batch_size=2,
         gradient_accumulation_steps=16,
         learning_rate=2e-4,
         num_train_epochs=NUM_EPOCHS,
         logging_strategy="steps",
         logging_dir=str(LOGGING_DIR),
-        logging_steps=10,
+        logging_steps=25,
         gradient_checkpointing=True,
         bf16=True,
         eval_strategy="steps",
-        eval_steps=10,
-        save_steps=100,
+        eval_steps=125,
+        save_steps=625,
         save_strategy="steps",
         load_best_model_at_end=True,
         metric_for_best_model="eval_loss",
